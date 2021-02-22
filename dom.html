@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        id = document.getElementById() 
+        class = document.getElementByClassName()
+        tag = document.getElementByTagName()
+        querySelector = document.querySelector()
+        selectorAll = document.querySelectorAll()
+    -->
+    <!-- <h1 id="heading">Heading 1</h1>
+    <p id="text">Text with Id</p>
+    <p class="text1">Text with Class</p>
+    <p class="paragraf">Paragraf 1</p>
+    <p class="paragraf">Paragraf 2</p>
+    <p class="paragraf">Paragraf 3</p> -->
+
+    <form id="form">
+        <label for="">Angka 1</label><br>
+        <input type="number" name="" id="numberOne"><br>
+        <label for="">Angka 2</label><br>
+        <input type="number" name="" id="numberTwo"><br>
+        <label for="">Hasil</label><br>
+        <input type="text" id="result" disabled><br><br>
+        <label for=""></label>
+        <select name="person_name" id="dropdown"></select>
+        <br>
+        <label for="">First Name</label><br>
+        <input type="text" name="first_name" id="first_name" class="first_name"><br><br>
+        <label for="">Last Name</label><br>
+        <input type="text" name="last_name" id="last_name"><br><br>
+        <br>
+        <label for="">Email</label><br>
+        <input type="email" name="email" id="email">
+        <br><br>
+        <label for="">Gender</label><br>
+        <input type="checkbox" name="" id="male" value="Pria" onclick="getGenderVal(this.value)">Pria <br>
+        <input type="checkbox" name="" id="female" value="Wanita" onclick="getGenderVal(this.value)">Wanita <br>
+        <label for="">Status</label><br>
+        <input type="radio" name="status" id="active" value="Active" onclick="getStatusVal(this.value)">Active
+        <input type="radio" name="status" id="inactive" value="Inactive" onclick="getStatusVal(this.value)">Inactive
+        <br>
+        <button id="" onclick="getGender(this.value)">Process</button>
+
+        <p id="output"></p>
+
+        <!-- <button onclick="getName()">Submit</button> -->
+        <!-- <button onclick="getValueForm()">Submit</button> -->
+        <!-- <button onclick="getValue()">Submit</button> -->
+        <!-- <button onclick="getSum()">Submit</button> -->
+    </form>
+
+    <p id="valueFromForm"></p>
+
+    <script src="js/dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // Memanggil berdasarkan class
+       $('.paragraf').css('color', 'red').css('font-style', 'italic').css('font-family', 'Arial Black'); 
+        // Memanggil berdasarkan tag  
+       $('p').css('background-color', 'blue').css('color', 'white');
+        // Memanipulasi elemen berdasarkan id
+        $('#text').css('color', 'white');
+        
+        function getStatusVal()
+        {
+            // var testing = document.getElementById('active').value;
+            // var resultRadio = testing == 'Active' ? 'Aktif' : 'Tidak Aktif';
+            // $('#output').text(resultRadio);
+
+            // var active = $('#active').prop('checked', true);
+            // var inactive = $('#inactive').prop('checked', true);
+            var active = $('#active').is(":checked");
+            var inactive = $('#inactive').is(":checked");
+            // Ternary Operator
+            active ? $('#output').text('Aktif') : $('#output').text('Tidak Aktif');
+
+            // if(active){
+            //     $('#output').text('Aktif');
+            // }else{
+            //     $('#output').text('Tidak Aktif');
+            // }
+
+            console.log(active);
+        }
+
+        function getName()
+        {
+            event.preventDefault();
+            // Khusus untuk getElementByName / attribut
+            // var firstname = first_name.value;
+            var firstname = document.querySelector('.first_name').value;
+            var lastname = document.getElementsByName('last_name')[0].value;
+            var email = firstname+'.'+lastname+'@mail.com';
+            var result = document.getElementsByName('email')[0].value = email;
+            console.log(firstname);
+            // console.log(firstname + ' ' + lastname);
+        }
+
+        function getGenderVal(){
+            var male = document.getElementById('male').checked;
+            var female = document.getElementById('female').checked;
+            
+            if(male == true){
+                document.getElementById('output').innerHTML = 'Pria';    
+            }
+
+            if(female == true){
+                document.getElementById('output').innerHTML = 'Wanita';
+            }
+        }
+        
+
+        function getValue()
+        {
+            var numberTxt = $('#numberTxt').val();
+            event.preventDefault();
+            $('#valueFromForm').text(numberTxt);
+        }
+
+        function getSum()
+        {
+            var num1 = $('#numberOne').val();
+            var num2 = $('#numberTwo').val();
+            var result = parseInt(num1) + parseInt(num2);
+            console.log(result);
+            event.preventDefault();
+            $('#result').val(result);
+        }
+
+        var people = ['Ilham', 'Andhika', 'Fateh'];
+        $('#dropdown').append('<option value="select">Select Name</option>')
+
+        // Loop with Each
+        $.each(people, function(index, nilai){
+            $('#dropdown').append($('<option></option>',{
+                value: index,
+                html: nilai
+            }))
+        })
+    </script>
+</body>
+</html>

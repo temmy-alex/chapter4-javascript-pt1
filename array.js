@@ -43,7 +43,7 @@ var desc = numbers.sort(function(a,b){ return b-a });
 console.log(desc);
 
 let fsw_seven = ['Eric', 'Fateh', 'Casey', 'Didi'];
-console.log(fsw_seven.sort().reverse().toString());
+console.log(fsw_seven.sort().reverse().toString().join(''));
 
 
 // console.log(numbers.sort());
