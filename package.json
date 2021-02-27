@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/temmy-virtuoso/chapter4-part1-primitive-type-data/issues"
   },
-  "homepage": "https://github.com/temmy-virtuoso/chapter4-part1-primitive-type-data#readme"
+  "homepage": "https://github.com/temmy-virtuoso/chapter4-part1-primitive-type-data#readme",
+  "devDependencies": {
+    "standard": "^16.0.3"
+  }
 }
